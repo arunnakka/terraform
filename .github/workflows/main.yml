@@ -1,10 +1,10 @@
 name: Terraform CI
 
-on:
-  push:
-    branches:
-      - main
-
+on: 
+  workflow_dispatch:
+    inputs:
+        appname:
+        location:
 jobs:
   terraform:
     runs-on: ubuntu-latest
@@ -27,8 +27,8 @@ jobs:
         run: terraform init
 
       - name: Terraform Plan
-        run: terraform plan
+        run: terraform plan  -var "appname=${{ inputs.appname }}" -var "location=${{ inputs.location }}" 
 
       - name: Terraform Apply
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-        run: terraform apply -auto-approve
+       # if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: terraform apply -auto-approve -var "appname=${{ inputs.appname }}" -var "location=${{ inputs.location }}" 
