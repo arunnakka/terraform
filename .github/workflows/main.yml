@@ -31,4 +31,4 @@ jobs:
 
       - name: Terraform Apply
        # if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-        run: terraform apply -auto-approve -var "appname=${{ inputs.appname }}" -var "location=${{ inputs.location }}" 
+        run: terraform apply -auto-approve -var "appname=${{ inputs.appname }}" -var "location=${{ inputs.location }}" -var "env=${{ inputs.env }}" 
