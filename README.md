@@ -5,7 +5,6 @@ This repository contains Terraform configuration files for provisioning and mana
 
 ## Project Structure
 
-bashCopy code
 
     terraform/
     ├── backend.tf               # Backend configuration for storing Terraform state
