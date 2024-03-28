@@ -17,6 +17,13 @@ jobs:
         uses: 'google-github-actions/auth@v2'
         with:
          credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
+
+      - name: Install tfsec
+        run: |
+          wget -q -O /tmp/tfsec https://github.com/tfsec/tfsec/releases/latest/download/tfsec-linux-amd64
+          chmod +x /tmp/tfsec
+          sudo mv /tmp/tfsec /usr/local/bin/tfsec
+  
       - name: Set up Terraform
         uses: hashicorp/setup-terraform@v1
         with:
