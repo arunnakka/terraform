@@ -25,7 +25,7 @@ jobs:
           pass: ${{ secrets.GCP_CREDENTIALS }}
 
       - name: Terraform Init
-        run: terraform init
+        run: terraform init  -backend-config="bucket=backend-tf-state-gcp-${{ inputs.env}} " 
 
       - name: Terraform Plan
         run: terraform plan  -var "appname=${{ inputs.appname }}" -var "location=${{ inputs.location }}" -var "env=${{ inputs.env }}
