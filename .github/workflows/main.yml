@@ -28,7 +28,7 @@ jobs:
         run: terraform init  -backend-config="bucket=backend-tf-state-gcp-${{ inputs.env}}" 
 
       - name: Terraform Plan
-        run: terraform plan  -var "appname=${{ inputs.appname }}" -var "location=${{ inputs.location }}" -var "env=${{ inputs.env }}
+        run: terraform plan  -var "appname=${{ inputs.appname }}" -var "location=${{ inputs.location }}" -var "env=${{ inputs.env }}"
 
       - name: Terraform Apply
        # if: github.event_name == 'push' && github.ref == 'refs/heads/main'
