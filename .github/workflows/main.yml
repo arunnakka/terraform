@@ -36,6 +36,7 @@ jobs:
 
       - name: Run tfsec
         run: tfsec .
+        if: ${{ success() }} 
 
       - name: Terraform Plan
         run: terraform plan  -var "appname=${{ inputs.appname }}" -var "location=${{ inputs.location }}" -var "env=${{ inputs.env }}"
